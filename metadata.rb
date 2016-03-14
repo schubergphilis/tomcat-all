@@ -4,10 +4,10 @@ maintainer_email 'robertomoutinho@gmail.com'
 license          'All rights reserved'
 description      'Installs/Configures tomcat'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.3.1001'
+version          '0.3.1002'
 
 depends 'ark', '~> 0.9.0'
-depends 'java', '~> 1.31.0'
+depends 'java', '~> 1.39.0'
 depends 'apt', '~> 2.4.0'
 
 supports 'ubuntu', '= 12.04'
