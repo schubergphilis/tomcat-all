@@ -98,7 +98,7 @@
       </Realm>
       <% end -%>
 
-      <Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">
+      <Host name="localhost"  appBase="<%= node["tomcat-all"]["app_base"] %>" unpackWARs="true" autoDeploy="<%= node["tomcat-all"]["auto_deploy"] %>">
 
         <% if node["tomcat-all"]["cluster_class"] != '' %>
             <Cluster className="<%= node["tomcat-all"]["cluster_class"] %>">
