@@ -26,12 +26,13 @@
     <Connector executor="tomcatThreadPool"
                port="<%= node["tomcat-all"]["port"] %>" protocol="HTTP/1.1"
                connectionTimeout="<%= node['tomcat-all']['connectionTimeout'] %>"
-               maxHttpHeaderSize="<%= node['tomcat-all']['maxHttpHeaderSize'] %>""8192"
+               maxHttpHeaderSize="<%= node['tomcat-all']['maxHttpHeaderSize'] %>"
                enableLookups="false"
                acceptCount="<%= node['tomcat-all']['acceptCount'] %>"
                disableUploadTimeout="true"
                URIEncoding="UTF-8"
-               acceptorThreadCount="<%= node['tomcat-all']['acceptCount'] %>"
+               acceptorThreadCount="<%= node['tomcat-all']['acceptorThreadCount'] %>"
+               maxConnections="<%= node['tomcat-all']['maxConnections'] %>"
                redirectPort="443"/>
 
     <% end -%>
@@ -39,7 +40,7 @@
 
     <Connector executor="tomcatThreadPool"
         port="<%= node["tomcat-all"]["ssl_port"] %>"
-        maxHttpHeaderSize="node['tomcat-all']['maxHttpHeaderSize']"
+        maxHttpHeaderSize="<%= node['tomcat-all']['maxHttpHeaderSize'] %>" 
         enableLookups="false"
         disableUploadTimeout="true"
         acceptCount="<%= node['tomcat-all']['acceptCount'] %>"
@@ -48,7 +49,8 @@
         SSLEnabled="true"
         clientAuth="false"
         sslProtocol="TLS"
-        acceptorThreadCount="<%= node['tomcat-all']['acceptCount'] %>"
+        acceptorThreadCount="<%= node['tomcat-all']['acceptorThreadCount'] %>"
+        maxConnections="<%= node['tomcat-all']['maxConnections'] %>"
         URIEncoding="UTF-8"
         <% if node["tomcat-all"]["keystore_file"]!='' -%>
             keystoreFile="<%= node["tomcat-all"]["keystore_file"] %>"
