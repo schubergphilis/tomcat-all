@@ -19,31 +19,38 @@
   <Service name="Catalina">
 
     <Executor name="tomcatThreadPool" namePrefix="catalina-exec-"
-        maxThreads="<%= node["tomcat-all"]["max_threads"] %>" minSpareThreads="<%= node["tomcat-all"]["min_spare_threads"] %>" />
+    maxThreads="<%= node["tomcat-all"]["max_threads"] %>" minSpareThreads="<%= node["tomcat-all"]["min_spare_threads"] %>" />
+
+    <% if node["tomcat-all"]["http_enabled"] -%>
 
     <Connector executor="tomcatThreadPool"
                port="<%= node["tomcat-all"]["port"] %>" protocol="HTTP/1.1"
-               connectionTimeout="20000"
-               maxHttpHeaderSize="8192"
+               connectionTimeout="<%= node['tomcat-all']['connectionTimeout'] %>"
+               maxHttpHeaderSize="<%= node['tomcat-all']['maxHttpHeaderSize'] %>"
                enableLookups="false"
-               acceptCount="100"
+               acceptCount="<%= node['tomcat-all']['acceptCount'] %>"
                disableUploadTimeout="true"
                URIEncoding="UTF-8"
+               acceptorThreadCount="<%= node['tomcat-all']['acceptorThreadCount'] %>"
+               maxConnections="<%= node['tomcat-all']['maxConnections'] %>"
                redirectPort="443"/>
 
+    <% end -%>
     <% if node["tomcat-all"]["ssl_enabled"] -%>
 
     <Connector executor="tomcatThreadPool"
         port="<%= node["tomcat-all"]["ssl_port"] %>"
-        maxHttpHeaderSize="8192"
+        maxHttpHeaderSize="<%= node['tomcat-all']['maxHttpHeaderSize'] %>" 
         enableLookups="false"
         disableUploadTimeout="true"
-        acceptCount="100"
+        acceptCount="<%= node['tomcat-all']['acceptCount'] %>"
         scheme="https"
         secure="true"
         SSLEnabled="true"
         clientAuth="false"
         sslProtocol="TLS"
+        acceptorThreadCount="<%= node['tomcat-all']['acceptorThreadCount'] %>"
+        maxConnections="<%= node['tomcat-all']['maxConnections'] %>"
         URIEncoding="UTF-8"
         <% if node["tomcat-all"]["keystore_file"]!='' -%>
             keystoreFile="<%= node["tomcat-all"]["keystore_file"] %>"

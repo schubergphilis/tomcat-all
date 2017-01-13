@@ -13,6 +13,12 @@ default['tomcat-all']['shutdown_port'] = '8005'
 default['tomcat-all']['port'] = '8080'
 default['tomcat-all']['max_threads'] = '100'
 default['tomcat-all']['min_spare_threads'] = '10'
+default['tomcat-all']['http_enabled'] = true
+default['tomcat-all']['connectionTimeout'] = 20000
+default['tomcat-all']['maxHttpHeaderSize'] = 8192
+default['tomcat-all']['acceptCount'] = 100
+default['tomcat-all']['acceptorThreadCount'] = 2
+default['tomcat-all']['maxConnections'] = 150
 default['tomcat-all']['java_opts'] = '-d64 -server -Djava.awt.headless=true'
 default['tomcat-all']['catalina_opts'] = ''
 default['tomcat-all']['app_base'] = 'webapps'
