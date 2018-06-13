@@ -26,7 +26,7 @@ default['tomcat-all']['auto_deploy'] = true
 
 # SSL Connector
 default['tomcat-all']['ssl_enabled'] = false
-default['tomcat-all']['ssl_port'] = 
+default['tomcat-all']['ssl_port'] = ''
 default['tomcat-all']['ssl_protocol'] = ''
 default['tomcat-all']['keystore_file'] = ''
 default['tomcat-all']['keystore_pass'] = ''
