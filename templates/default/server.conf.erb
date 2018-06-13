@@ -48,7 +48,13 @@
         secure="true"
         SSLEnabled="true"
         clientAuth="false"
-        sslProtocol="TLS"
+        sslProtocol="<%= node['tomcat-all']['ssl_protocol'] %>"
+        <% if defined? node['tomcat-all']['useServerCipherSuitesOrder'] %>
+          useServerCipherSuitesOrder = "<%= node['tomcat-all']['useServerCipherSuitesOrder'] %>"
+        <% end %>
+        <% if defined? node['tomcat-all']['ssl_ciphers'] %>
+          ciphers = "<%= node['tomcat-all']['ssl_ciphers'] %>"
+        <% end %>
         acceptorThreadCount="<%= node['tomcat-all']['acceptorThreadCount'] %>"
         maxConnections="<%= node['tomcat-all']['maxConnections'] %>"
         URIEncoding="UTF-8"
