@@ -49,10 +49,10 @@
         SSLEnabled="true"
         clientAuth="false"
         sslProtocol="<%= node['tomcat-all']['ssl_protocol'] %>"
-        <% if defined? node['tomcat-all']['useServerCipherSuitesOrder'] %>
+        <% if defined? node['tomcat-all']['useServerCipherSuitesOrder'] and !node['tomcat-all']['useServerCipherSuitesOrder'].nil? %>
           useServerCipherSuitesOrder = "<%= node['tomcat-all']['useServerCipherSuitesOrder'] %>"
         <% end %>
-        <% if defined? node['tomcat-all']['ssl_ciphers'] %>
+        <% if defined? node['tomcat-all']['ssl_ciphers'] and !node['tomcat-all']['ssl_ciphers'].nil? %>
           ciphers = "<%= node['tomcat-all']['ssl_ciphers'] %>"
         <% end %>
         acceptorThreadCount="<%= node['tomcat-all']['acceptorThreadCount'] %>"
