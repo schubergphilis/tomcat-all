@@ -50,7 +50,7 @@
         clientAuth="false"
         sslProtocol="<%= node['tomcat-all']['ssl_protocol'] %>"
         <% if defined? node['tomcat-all']['useServerCipherSuitesOrder'] %>
-          ciphers = "<%= node['tomcat-all']['useServerCipherSuitesOrder'] %>"
+          useServerCipherSuitesOrder = "<%= node['tomcat-all']['useServerCipherSuitesOrder'] %>"
         <% end %>
         <% if defined? node['tomcat-all']['ssl_ciphers'] %>
           ciphers = "<%= node['tomcat-all']['ssl_ciphers'] %>"
