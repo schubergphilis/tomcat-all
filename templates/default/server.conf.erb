@@ -146,8 +146,11 @@
             <Valve className="org.apache.catalina.authenticator.SingleSignOn" />
         <% end %>
 
-        <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
-               prefix="localhost_access_log." suffix=".txt" pattern="%h %l %u %t &quot;%r&quot; %s %b" />
+        <Valve className="org.apache.catalina.valves.AccessLogValve"
+               directory="<%= node['tomcat-all']['access_logs']['directory'] %>"
+               prefix="<%= node['tomcat-all']['access_logs']['prefix'] %>" suffix="<%= node['tomcat-all']['access_logs']['suffix'] %>" pattern="<%= node['tomcat-all']['access_logs']['pattern'] %>" 
+               maxDays="<%=  node['tomcat-all']['access_logs']['max_days'] %>"
+               />
 
       </Host>
 
